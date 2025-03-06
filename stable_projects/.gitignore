@@ -58,6 +58,7 @@
 !/predict_phenotypes/Kong2023_GradPar/**
 !/predict_phenotypes/Chen2024_MMM/**
 !/predict_phenotypes/Naren2024_MMT1/**
+!/predict_phenotypes/Ooi2024_ME/**
 
 !/harmonization/*
 !/harmonization/An2024_DeepResBat/**

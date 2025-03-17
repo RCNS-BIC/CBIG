@@ -1,4 +1,4 @@
-#!/bin/sh -f
+#!/bin/sh
 # Written by Jingwei Li, Shaoshi Zhang and CBIG under MIT license: https://github.com/ThomasYeoLab/CBIG/blob/master/LICENSE.md
 
 output_dir=$1

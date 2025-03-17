@@ -1,8 +1,22 @@
 # Containerized CBIG_fMRI_Preproc2016
 
-If you are a user trying to run the containerized CBIG 2016 fMRI preprocessing pipeline, please refer to the [User Guides](#user-guide-using-a-lightweight-wrapper-recommended). Please note that the containers are not tested on Windows and Mac. If you encounter any issues on these two platforms, please create an issue on the [CBIG GitHub repository](https://github.com/ThomasYeoLab/CBIG)
+This is the containerized resting-state fMRI preprocessing pipeline written by [Thomas Yeo's Computational Brain Imaging Group (CBIG)](https://sites.google.com/view/yeolab) group. Our preprocessing pipeline allows flexible preprocessing order by specifying the order of preprocessing steps in a configuration text file. The preprocessing steps include:
+- slice-time correction
+- motion correction ([respiratory pseudomotion filtering](https://github.com/ThomasYeoLab/CBIG/blob/master/stable_projects/preprocessing/CBIG_fMRI_Preproc2016/respiratory_pseudomotion_filtering.md))
+- [spatial distortion correction](https://github.com/ThomasYeoLab/CBIG/blob/master/stable_projects/preprocessing/CBIG_fMRI_Preproc2016/spatial_distortion_correction_readme.md)
+- [multi-echo denoising](https://github.com/ThomasYeoLab/CBIG/blob/master/stable_projects/preprocessing/CBIG_fMRI_Preproc2016/multi_echo_tedana_readme.md)
+- intra-subject registration between T1 and T2* images
+- nuisance regression
+- temporal interpolation of censored frames
+- bandpass filtering ([recommendation of bandpass censoring](https://github.com/ThomasYeoLab/CBIG/blob/master/stable_projects/preprocessing/CBIG_fMRI_Preproc2016/Recommendation_of_bandpass_censoring.md))
+- projections to standard surface & volumetric spaces
+- functional connectivity (FC) matrix computation
 
-If you are a developer trying to improve the containerization script, please refer to the [Developer Guide](README_DEV.md).
+For more details about the preprocessing pipeline, please refer to this [README](https://github.com/ThomasYeoLab/CBIG/tree/master/stable_projects/preprocessing/CBIG_fMRI_Preproc2016).
+
+We strongly encourage you to join the CBIG users group (https://groups.google.com/forum/#!forum/cbig_users/join), so that you can be informed about major updates & bugs.
+
+If you have issues, please email the CBIG users group. Do not post on the public repo issues page because we do not check it frequently (since we have a private github repo that keeps track of issues). We will try our best to answer your questions, but we have limited resources to provide support.
 
 ## Introduction to Containerization Technologies
 
@@ -357,3 +371,12 @@ cd /app/CBIG_private/stable_projects/preprocessing/CBIG_fMRI_Preproc2016 && csh 
 -config /input/<config>
 ...
 ```
+
+## Updates
+
+- Release v1.1.0 (14/03/2025):
+    - Keep the docker image consistent with [`v0.34.1-Fix_motion_correction`](https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.34.1-Fix_motion_correction)
+- Release v1.0.1 (14/10/2024):
+    - Minor fix to enhance user experience
+- Release v1.0.0 (12/07/2024):
+    - The initial release of the containerized CBIG fMRI preprocessing pipeline

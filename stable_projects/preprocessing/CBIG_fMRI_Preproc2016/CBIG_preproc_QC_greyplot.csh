@@ -271,7 +271,7 @@ foreach runfolder ($bold)
             Skip creating Multi-echo QC greyplot." |& tee -a $LF
         else
             pushd $boldfolder/mc/
-            set FDpath = `ls -d *motion_outliers_FDRMS`
+            set FDpath = `ls -d *bld${runfolder}*motion_outliers_FDRMS`
             popd
             set FDpath = "$boldfolder/mc/$FDpath"
             set matlab_args = "'$before_MEICA' '$after_MEICA' '$FDpath'"

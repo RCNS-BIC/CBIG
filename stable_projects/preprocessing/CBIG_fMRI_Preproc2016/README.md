@@ -50,14 +50,14 @@ Except for this project, if you want to use the code for other stable projects f
 - To download the version of the code that was last tested, you can either
 
   - visit this link:
-  [https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.29.7-Update_preproc](https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.29.7-Update_preproc)
+  [https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.34.1-Fix_motion_correction](https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.34.1-Fix_motion_correction)
   
   or
   
   - run the following command, if you have Git installed
   
   ```
-  git checkout -b CBIG_fMRI_Preprocessing v0.29.7-Update_preproc
+  git checkout -b CBIG_fMRI_Preprocessing v0.34.1-Fix_motion_correction
   ```
 
 ### Usage 
@@ -105,6 +105,11 @@ codes would work on ANTs version 2.2.0.
 ----
 
 ## Updates
+
+- Release v0.34.1 (17/03/2025): 
+   1. Bug fix: `CBIG_preproc_fslmcflirt_outlier.csh`: For multi-echo data without spatial distortion correction, the motion correction transformation matrices were incorrectly applied with a one-frame shift. This bug does not affect single-echo data or multi-echo data with spatial distortion correction.
+
+   2. Bug fix: `CBIG_preproc_QC_greyplot.csh`: For multi-echo data, the multi-echo QC grayplots failed to generate with multiple runs.  
 
 - Release v0.29.7 (26/02/2024):
    1. Add support for MATLAB Runtime. User can run the preprocessing pipeline with MATLAB Runtime instead of licensed MATLAB version.

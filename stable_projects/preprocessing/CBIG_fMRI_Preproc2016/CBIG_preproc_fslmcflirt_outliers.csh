@@ -322,20 +322,6 @@ end
 
 echo "*********************************************************************" |& tee -a $LF
 
-#############################################
-# Clean up intermediate files
-#############################################
-if ( $nocleanup != 1 ) then
-    foreach curr_bold ($zpdbold)
-        pushd $curr_bold
-        set boldfile = $subject"_bld"$curr_bold$echo_stem$BOLD_stem
-        set mergefile = $boldfile"_merge.nii.gz"
-        rm $mergefile
-
-        popd
-    end
-endif
-
 ###############################################
 # check if the number of outliers exceeds 50% of total number of frames
 ###############################################
@@ -359,7 +345,6 @@ if ($rm_run == 1) then
         if( `echo "$prop > $rm_run_th" | bc` ) then
             echo "Run $runfolder has more than $rm_run_th% outliers, remove this run from bold file." |& tee -a $LF
             sed -i -e "s/${runfolder}//g" ${bold_file}
-            set bold = `cat ${bold_file}`
         else
             echo "Run $runfolder has less than $rm_run_th% outliers, nothing change to this run." |& tee -a $LF
         endif
@@ -373,26 +358,72 @@ endif
 #########################
 echo "====================== apply transformation on other echos ======================" |& tee -a $LF
 cd $sub_dir/$subject/bold
-foreach curr_bold ($zpdbold)
+set bold = `cat ${bold_file}`
+foreach curr_bold ($bold)
     pushd $curr_bold
+    set xfm_dir="$subject"_bld"$curr_bold"_e1"$BOLD_stem"_mc.mat
     set i = 2
     while ( $i <= $echo_number)
-        set xfm_dir="$subject"_bld"$curr_bold"_e1"$BOLD_stem"_mc.mat
-        set cmd = (applyxfm4D "$subject"_bld"$curr_bold"_e$i"$BOLD_stem".nii.gz) 
-        set cmd = ( $cmd "$subject"_bld"$curr_bold"_e$i"$BOLD_stem".nii.gz)
-        set cmd = ( $cmd "$subject"_bld"$curr_bold"_e$i"$BOLD_stem"_mc.nii.gz ${xfm_dir} -fourdigit)
-        echo $cmd |& tee -a $LF
-        eval $cmd
+        set echo_stem = _e$i
+        set boldfile = $subject"_bld"$curr_bold$echo_stem$BOLD_stem
+        if ( (! -e  $boldfile"_mc.nii.gz") || ($force == 1) ) then
+            # Attach the template to the first frame. Which frame is attached does not affect the final result.
+            set cmd = "fslmerge -t ${boldfile}_merge ${template} ${boldfile}"
+            echo $cmd |& tee -a $LF
+            eval $cmd
+            set cmd = "applyxfm4D ${boldfile}_merge.nii.gz ${boldfile}_merge.nii.gz "
+            set cmd = "$cmd ${boldfile}_mc.nii.gz ${xfm_dir} -fourdigit"
+            echo $cmd |& tee -a $LF
+            eval $cmd
+            set numof_tps = `fslnvols ${boldfile}".nii.gz"` 
+            set cmd = "fslroi ${boldfile}_mc ${boldfile}_mc 1 ${numof_tps}"
+            echo $cmd |& tee -a $LF
+            eval $cmd
+        else
+            echo "[MC]: ${boldfile}_mc.nii.gz already exists!" |& tee -a $LF
+        endif
         @ i++
     end
     # remove MAT_0000 for spatial distortion correction
-    echo "=========remove MAT_0000 and generate transformation matrix========="
+    echo "=========remove MAT_0000 and generate transformation matrix=========" |& tee -a $LF
+    if ($echo_number != 1) then
+        set echo_stem = _e1
+    else
+        set echo_stem = ""
+    endif
     set boldfile = $subject"_bld"$curr_bold$echo_stem$BOLD_stem
     rm ${boldfile}_mc.mat/MAT_0000
     cat ${boldfile}_mc.mat/MAT* > ${boldfile}_mc.cat
     popd
 end
 echo "====================== apply transformation on other echos finished ======================" |& tee -a $LF
+
+#############################################
+# Clean up intermediate files
+#############################################
+if ( $nocleanup != 1 ) then
+    foreach curr_bold ($zpdbold) # remove merged intermediate file for single echo and multiecho e1
+        pushd $curr_bold
+        set boldfile = $subject"_bld"$curr_bold$echo_stem$BOLD_stem
+        set mergefile = $boldfile"_merge.nii.gz"
+        rm $mergefile
+        popd
+    end
+    if ($echo_number != 1) then # remove rest echos
+        foreach curr_bold ($bold)
+            pushd $curr_bold
+            set i = 2
+            while ( $i <= $echo_number)
+                set echo_stem = _e$i
+                set boldfile = $subject"_bld"$curr_bold$echo_stem$BOLD_stem
+                set mergefile = $boldfile"_merge.nii.gz"
+                rm $mergefile
+                @ i++
+            end
+            popd
+        end
+    endif
+endif
 
 #########################
 # Output last commit of current function 

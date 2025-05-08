@@ -137,7 +137,6 @@ dependencies:
     - charset-normalizer==3.3.2
     - configobj==5.0.8
     - cycler==0.11.0
-    - envisage==7.0.3
     - et-xmlfile==1.1.0
     - flake8==3.7.7
     - fonttools==4.34.4
@@ -147,7 +146,6 @@ dependencies:
     - kiwisolver==1.4.4
     - lxml==5.2.1
     - matplotlib==3.5.2
-    - mayavi==4.8.1
     - mccabe==0.6.1
     - nibabel==5.2.1
     - nilearn==0.10.4
@@ -155,9 +153,7 @@ dependencies:
     - pandas==1.4.4
     - platformdirs==4.3.6
     - pycodestyle==2.5.0
-    - pyface==8.0.0
     - pyflakes==2.1.1
-    - pysurfer==0.11.2
     - pytz-deprecation-shim==0.1.0.post0
     - requests==2.31.0
     - rpy2==3.5.5
@@ -167,10 +163,8 @@ dependencies:
     - threadpoolctl==3.5.0
     - tomli==2.0.1
     - traits==6.4.3
-    - traitsui==8.0.0
     - tzdata==2022.5
     - tzlocal==4.2
-    - vtk==9.3.0
     - xcsv==0.2.0
     - xcsv-plot==0.1.0
     - yapf==0.40.2

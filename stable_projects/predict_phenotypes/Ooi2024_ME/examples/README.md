@@ -1,6 +1,6 @@
 # Example of fitting theoretical models for the NxT matrix of a given phenotype
 This example fits the logarithmic and theoretical models in Ooi2024_ME to the NxT matrix of prediction 
-accuracies for the cognition factor phenotype in the Human Connectome Project.
+accuracies for the cognition factor phenotype in the Human Connectome Project. Alternative to the MATLAB scripts, a Python version can be found here `Ooi2024_ME/unit_tests/test_CBIG_ME_unit_test.py`. The run time is approximately 30 minutes.
 
 ## Input
 Data for this example can be found in the `example_data` folder. This contains the data 
@@ -13,5 +13,5 @@ A description of the data for the subjects are as follows.
 phenotypes in the HCP. The cognition factor is in index 60 (matlab-indexed).
 
 ## Scripts
-1. `CBIG_ME_example_wrapper.m`: Runs the curve fitting and saves the fitted parameters, and loss from the fitted curves. Please activate the `Ooi2024_ME` python environment before running the scripts.
+1. `CBIG_ME_example_wrapper.m`: Runs the curve fitting and saves the fitted parameters, and loss from the fitted curves. Please activate the `Ooi2024_ME` python environment before running the scripts. 
 2. `CBIG_ME_check_example_results.m`: Checks whether the output of the example are the same as the reference results.

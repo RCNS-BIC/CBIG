@@ -3,7 +3,7 @@
 # Written by Shaoshi Zhang and CBIG under MIT license: https://github.com/ThomasYeoLab/CBIG/blob/master/LICENSE.md
 
 config=$CBIG_CODE_DIR/stable_projects/fMRI_dynamics/Zhang2024_pFIC/unit_tests/CBIG_pFIC_unit_test_config.ini
-source activate pFIC
+source CBIG_init_conda; conda activate pFIC;
 
 # training
 python \

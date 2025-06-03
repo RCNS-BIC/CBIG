@@ -89,7 +89,8 @@ if echo "$answer" | grep -iq "^y"; then
     # create new CBIG_py3
     echo "-- Creating CBIG_py3 environment --"
     conda env create --file $WORKDIR/CBIG_python3_env.yml
-    source activate CBIG_py3
+    source CBIG_init_conda
+    conda activate CBIG_py3
 
     conda_failed=$?
 

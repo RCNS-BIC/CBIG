@@ -5,7 +5,7 @@
 rep_dir="$CBIG_CODE_DIR/stable_projects/predict_phenotypes/Chen2024_MMM/replication/"
 log_dir="${rep_dir}/log"
 mkdir -p ${log_dir}
-cmd="cd ${rep_dir}; source activate CBIG_Chen2024;"
+cmd="cd ${rep_dir}; source CBIG_init_conda; conda activate CBIG_Chen2024;"
 cmd="${cmd} python ../cbig/Chen2024/optuna_dnn.py"
 $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd "$cmd" -walltime 99:00:00 -mem 512G -ncpus 4 -ngpus 1 \
 -name "Optuna" -joberr "${log_dir}/optuna_err.txt" \

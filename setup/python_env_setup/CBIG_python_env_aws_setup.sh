@@ -35,7 +35,8 @@ if echo "$answer" | grep -iq "^y"; then
     fi
     echo "-- Creating CBIG_py3_aws environment --"
     conda create -n CBIG_py3_aws python=3.6
-    source activate CBIG_py3_aws
+    source CBIG_init_conda
+    conda activate CBIG_py3_aws
 
     echo "-- Installing package aws-cli --"
     conda install -c conda-forge awscli=1.15.15

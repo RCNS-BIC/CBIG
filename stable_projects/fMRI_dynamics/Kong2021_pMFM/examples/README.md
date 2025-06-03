@@ -4,7 +4,7 @@
 
 # Usage
 1. In the terminal, go to working directory using command: `cd $CBIG_CODE_DIR/stable_projects/fMRI_dynamics/Kong2021_pMFM/examples/scripts`
-2. In the terminal, source into the Anaconda environment: `source activate pMFM`
+2. In the terminal, source into the Anaconda environment: `conda activate pMFM`
 3. In the terminal, run `python CBIG_pMFM_parameter_estimation_example.py`
 4. The output of the toy example will be automatically stored into `$CBIG_CODE_DIR/stable_projects/fMRI_dynamics/Kong2021_pMFM/examples/output` folder named by `example_output.csv`. The folder also contains the expected output from toy example named `expected_output.csv`.
 5. To get the same result as `expected_output.csv`, we highly recommend the users to follow the setup instructions to get the proper runtime CUDA version and conda environment.

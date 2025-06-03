@@ -54,4 +54,5 @@ export MATLABPATH=$CBIG_CODE_DIR/setup
 # Please UNCOMMENT if you follow CBIG's set up for Python environments.
 # We use Python version 3.5 as default.
 # Please see $CBIG_CODE_DIR/setup/python_env_setup/README.md for more details.
-# source activate CBIG_py3
+# source CBIG_init_conda
+# conda activate CBIG_py3

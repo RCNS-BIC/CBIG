@@ -196,6 +196,9 @@ if( $wm == 1 ) then
             echo $cmd |& tee -a $LF
             eval $cmd |& tee -a $LF
 
+            if ( $wm_max_erode == 0 ) then
+                set wm_max_erode = 1
+            endif
             foreach i (`seq 0 1 ${wm_max_erode}`)
                 set cmd = "mri_binarize --i mask/$subject.func.aseg.nii \
 --wm --erode ${i} --o mask/$subject.func.wm_erode${i}.nii.gz"
@@ -206,12 +209,13 @@ if( $wm == 1 ) then
                 echo $wm_vol[2] > mask/${subject}_func_wm_erode${i}_vol.txt
             end
 
-            echo "Final white matter mask is eroded by 1 times in functional space."
+            echo "Final white matter mask is eroded by 1 time in functional space." |& tee -a $LF
             set cmd = "rsync -az mask/$subject.func.wm_erode1.nii.gz mask/$subject.func.wm.nii.gz"
             echo $cmd |& tee -a $LF
             eval $cmd |& tee -a $LF
 
         else
+            set wm_erode = 0
             foreach i (`seq 0 1 ${wm_max_erode}`)
                 set cmd = "mri_binarize --i $anat_dir/$anat/mri/aparc+aseg.mgz \
 --wm --erode ${i} --o mask/${subject}.anat.wm_erode${i}.nii.gz"
@@ -268,7 +272,7 @@ if( $csf == 1 ) then
                 echo $vent_vol > mask/${subject}_func_ventricles_erode${i}_vol.txt
             end
 
-            echo "Final ventricles mask is eroded by 0 times in functional space." |& tee -a $LF
+            echo "Final ventricles mask is eroded by 0 time in functional space." |& tee -a $LF
             set cmd = "rsync -az mask/$subject.func.ventricles_erode0.nii.gz mask/$subject.func.ventricles.nii.gz"
             echo $cmd |& tee -a $LF
             eval $cmd |& tee -a $LF
@@ -573,9 +577,10 @@ DESCRIPTION:
     mask for WM is eroded once, and the final mask for ventricles is not eroded.
     If the WM mask and ventricles mask are eroded in anatomical space, the final 
     mask for WM is the smallest (depends on the maximal erosions the user passed in) 
-    but has at least 100 voxels, and the final mask for ventricles is also the one 
-    which is smallest (depends on the maximal erosions the user passed in) but has 
-    at least 100 voxels.
+    but has at least 2700 mm^3 in volume, and the final mask for ventricles is also
+    the one which is smallest (depends on the maximal erosions the user passed in)
+    but has at least 2700 mm^3 in volume. (Note: For a voxel size of 3 mm per voxel,
+    2700 mm^3 is equivalent to 100 voxels.)
 
 REQUIRED ARGUMENTS:
     -s  subject_id                 : name of the subject

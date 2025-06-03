@@ -10,7 +10,7 @@ MATLAB=`which matlab`
 
 config=../config/example.ini
 module load cuda/11.7
-source activate pFIC
+source CBIG_init_conda; conda activate pFIC;
 
 # training
 python ../../model/CBIG_pFIC_training.py $config

@@ -9,4 +9,4 @@
 
 # Usage
 * Go to working directory using command: `cd $CBIG_CODE_DIR/stable_projects/fMRI_dynamics/Kong2021_pMFM/part2_pMFM_control_analysis/Constant_w/scripts` and follow the step order from step 1 to step 3 to run the scripts.
-* For python scripts, please first activate the environment (e.g. `source activate pMFM`) and then directly run the scripts.
+* For python scripts, please first activate the environment (e.g. `conda activate pMFM`) and then directly run the scripts.

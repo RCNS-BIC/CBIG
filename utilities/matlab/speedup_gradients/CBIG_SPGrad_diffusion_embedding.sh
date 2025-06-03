@@ -47,7 +47,8 @@ if [ -f "$output_dir/rh_emb_${num_component}_distance_matrix.mat" ]; then
     echo "Embedding results already exist!"
 else
 
-    source activate CBIG_py3
+    source CBIG_init_conda
+    conda activate CBIG_py3
 
     python $code_dir/apply_diffusion_on_individul_distance_matrix.py \
 $lh_dist_mat $rh_dist_mat $output_dir $num_component
@@ -59,5 +60,5 @@ $lh_dist_mat $rh_dist_mat $output_dir $num_component
         echo "Error: diffusion embedding matrix failed!"
     fi
 
-    source deactivate CBIG_py3
+    conda deactivate
 fi

@@ -851,7 +851,6 @@ REQUIRED ARGUMENTS:
                                         is Sub0001_Ses1_bld002_rest_skip4_stc_mc_reg.dat, then 
                                         <REG_stem> = _rest_skip4_stc_mc_reg. The registration file is assumed to be 
                                         stored in <subject_dir>/<subject_id>/bold/<run_number>.
-                                        <subject_dir>/<subject_id>/bold/<run_number>.
     -MASK_stem  <MASK_stem>           : the stem of input file used to create the mask. E.g. if the template to 
                                         create the masks is Sub0001_Ses1_bld002_rest_skip4_stc_mc.nii.gz, then 
                                         <MASK_stem> = _rest_skip4_stc_mc. Notice that the choice of <MASK_stem> 
@@ -879,7 +878,8 @@ OPTIONAL ARGUMENTS:
                                         All ventricles masks eroded from 0 to <csf_max_erode> will be created.
                                         If erode in functional space, the final mask for ventricles is not eroded.
                                         If erode in anatomical space, the final mask for ventricles is the one which 
-                                        is smallest but has at least 100 voxels.
+                                        is smallest but has at least 2700 mm^3 in volume. (Note: For a voxel size of
+                                        3 mm per voxel, 2700 mm^3 is equivalent to 100 voxels.)
     -erode_space  <erode_space>       : The space that the erosion of WM and ventricles masks will be done. 
                                         Choose from "func" or "anat". Default is anat.
     -aCompCor                         : if this option is used, the WM mask and ventricles mask will be merged, and 

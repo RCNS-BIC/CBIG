@@ -23,7 +23,7 @@ source deactivate
 
 # low-performance group
 config=../config/GUSTO_low_performance.ini
-source activate MFM
+source activate pFIC
 
 # training
 python ../../../model/CBIG_pFIC_training.py $config

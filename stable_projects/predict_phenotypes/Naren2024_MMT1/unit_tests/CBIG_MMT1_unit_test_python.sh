@@ -7,7 +7,7 @@ err_log="${LOG_DIR}/unittest.err"
 out_log="${LOG_DIR}/unittest.out"
 job_name="MMT1_unittest"
 
-cmd="source activate Naren2024_MMT1;cd ${BASE_DIR};python -m unit_tests.test_CBIG_MMT1_unit_test"
+cmd="source activate Naren2024_MMT1;cd ${BASE_DIR};python -m unit_tests.MMT1_unit_test"
 $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd "$cmd" \
                                    -walltime "00:15:00" \
                                    -mem "50G" -ncpus "4" -ngpus "1" -name $job_name \

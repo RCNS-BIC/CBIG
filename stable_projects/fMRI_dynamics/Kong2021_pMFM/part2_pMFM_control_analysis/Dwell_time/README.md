@@ -7,4 +7,4 @@
 
 # Usage
 * Go to working directory using command: `cd $CBIG_CODE_DIR/stable_projects/fMRI_dynamics/Kong2021_pMFM/part2_pMFM_control_analysis/Dwell_time/scripts` and run the script `CBIG_pMFM_dwell_time_empirical.m` or `CBIG_pMFM_dwell_time_simulated.m`
-* For python scripts, please first activate the environment (e.g. `source activate pMFM`) and then directly run the scripts.
+* For python scripts, please first activate the environment (e.g. `conda activate pMFM`) and then directly run the scripts.

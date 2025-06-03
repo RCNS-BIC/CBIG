@@ -11,7 +11,7 @@ phe_list_path="${rep_data_dir}/stable_projects/predict_phenotypes/Chen2024_MMM/$
 num_phe=$(wc -l < ${phe_list_path})
 
 for phe in $(seq 0 $((num_phe - 1))); do
-    cmd="cd ${rep_dir}; source activate CBIG_Chen2024;"
+    cmd="cd ${rep_dir}; source CBIG_init_conda; conda activate CBIG_Chen2024;"
     cmd="${cmd} python ../cbig/Chen2024/CBIG_rr_xlarge_train.py --phe_idx ${phe} --src_dataset ${src_dataset}"
     $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd "$cmd" -walltime 72:00:00 -mem 128G -ncpus 8 -name "MMM_RR_train_XL" \
         -joberr "${log_dir}/${1}_RR_${phe}_err.txt" -jobout "${log_dir}/${1}_RR_${phe}_out.txt"

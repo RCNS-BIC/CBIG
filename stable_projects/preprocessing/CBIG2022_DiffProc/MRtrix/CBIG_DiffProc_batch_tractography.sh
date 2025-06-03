@@ -128,10 +128,10 @@ cat $subj_list | while read subject; do
     # for example, delete underscore : sub=$( echo $subject | tr -d '_')
     sub=$( echo $subject )
     echo "[PROGRESS]: Generating connectome for subj ID: $sub"
-    cmd="$scriptdir/CBIG_DiffProc_tractography_3_gen_connectome.sh $sub $algo $input_dir $output_dir \
+    cmd="source CBIG_init_conda; conda activate $py_env; \
+        $scriptdir/CBIG_DiffProc_tractography_3_gen_connectome.sh $sub $algo $input_dir $output_dir \
         $tract_streamlines $parcellation_arr $parcels_num_arr > $logdir/${sub}_SC_log.txt 2>&1"
-    ssh headnode "source activate $py_env; \
-    $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime 02:30:00 \
+    ssh headnode "$CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime 02:30:00 \
     -name 'gen_connectome' -mem 6GB -joberr '$logdir' -jobout '$logdir'" < /dev/null
 done
 

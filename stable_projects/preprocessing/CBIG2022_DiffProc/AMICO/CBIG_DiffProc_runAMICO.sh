@@ -13,6 +13,7 @@
 
 # set up directories and lists
 scriptdir=$( dirname "${BASH_SOURCE[0]}" )
+utildir=$CBIG_CODE_DIR/stable_projects/preprocessing/CBIG2022_DiffProc/utilities
 
 while [[ $# -gt 0 ]]; do
 key="$1"
@@ -78,7 +79,7 @@ cat $subj_list| while read subj; do
             if [ ! -d  $mask_output_dir/$subj ]; then mkdir -p $mask_output_dir/$subj; fi
             echo "Generating brain mask from b=0 image..."
             if [ ! -e  $mask_output_dir/$subj/${subj}_bet_b0_mask.nii.gz ]; then
-                $CBIG_CODE_DIR/stable_projects/preprocessing/CBIG2022_DiffProc/utilities/CBIG_DiffProc_generate_b0mask.sh \
+                $utildir/CBIG_DiffProc_generate_b0mask.sh \
                     ${dwi_dir}/${subj} $subj $mask_output_dir
             else
                 echo "Brain mask already exists, skipping..."
@@ -87,7 +88,8 @@ cat $subj_list| while read subj; do
         mask=$mask_output_dir/${subj}/${subj}_bet_b0_mask.nii.gz
 
         # run AMICO
-        cmd="source activate $py_env; python $scriptdir/CBIG_DiffProc_runAMICO.py \
+        cmd="source CBIG_init_conda; conda activate $py_env; \
+            python $scriptdir/CBIG_DiffProc_runAMICO.py \
             $output_dir $subj $dwi_dir $mask > $log_dir/AMICO_${subj}_log.txt"
         ssh headnode "$CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime '5:00:00' -mem '15G' \
             -name 'AMICO' -joberr '$log_dir' -jobout '$log_dir' " < /dev/null

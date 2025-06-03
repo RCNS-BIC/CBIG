@@ -12,7 +12,7 @@ module load cuda/11.0
 cd $ROOTDIR
 
 # run unit test
-python -m unit_tests.test_CBIG_DeepResBat_unit_test
+python -m unit_tests.CBIG_DeepResBat_unit_test
 
 # clean up
 rm -rf $ROOTDIR"/unit_tests/checkpoints"

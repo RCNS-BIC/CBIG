@@ -12,7 +12,7 @@ phe_list_path="${rep_data_dir}/${src_dataset}/${src_dataset}_phe_list.txt"
 num_phe=$(wc -l < ${phe_list_path})
 
 for phe in $(seq 0 $((num_phe - 1))); do
-    cmd="cd ${rep_dir}; source activate CBIG_Chen2024;"
+    cmd="cd ${rep_dir}; source CBIG_init_conda; conda activate CBIG_Chen2024;"
     cmd="${cmd} python ../cbig/Chen2024/CBIG_rr_medium.py --phe_idx ${phe} \
         --src_dataset ${src_dataset}  --${layer}"
     $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd "$cmd" -walltime 1:00:00 -mem 16G -ncpus 1 -name "MMM_RR_M" \

@@ -13,5 +13,5 @@
 
 # Usage
 * Go to working directory using command: `cd $CBIG_CODE_DIR/stable_projects/fMRI_dynamics/Kong2021_pMFM/part2_pMFM_control_analysis/Schaefer100_parcellation/scripts` and follow the step order from step 1 to step 7 to run the scripts.
-* For Python scripts, please first activate the environment (e.g. `source activate pMFM`) and then directly run the scripts. 
+* For Python scripts, please first activate the environment (e.g. `conda activate pMFM`) and then directly run the scripts. 
 * For Matlab scripts, directly run the scripts with proper inputs.

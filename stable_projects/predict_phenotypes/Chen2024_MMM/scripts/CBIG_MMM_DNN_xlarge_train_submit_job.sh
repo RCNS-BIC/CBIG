@@ -5,7 +5,7 @@
 rep_dir="$CBIG_CODE_DIR/stable_projects/predict_phenotypes/Chen2024_MMM/replication/"
 log_dir="${rep_dir}/log"
 mkdir -p ${log_dir}
-cmd="cd ${rep_dir}; source activate CBIG_Chen2024;"
+cmd="cd ${rep_dir}; source CBIG_init_conda; conda activate CBIG_Chen2024;"
 cmd="${cmd} python ../cbig/Chen2024/CBIG_dnn_xlarge_train.py --src_dataset $1 --gpu 0 --seed 1 --epochs 100 --metric cod \
 --weight_decay 2.727460424379488e-07 --lr 0.036612177992895435 --dropout 0.4 \
 --n_l1 512 --n_l2 256 --n_l3 128 --n_l4 1024 --n_hidden_layer 2  --batch_size 128 --patience 25"

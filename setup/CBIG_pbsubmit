@@ -222,7 +222,7 @@ NAME:
        to headnode and then run this script.
     4. If you want to run your job under conda enviroment, e.g. CBIG_py3, you must activate corresponding environment
        in "cmd" argument. For example, when you want to submit jobs under CBIG_py3, you need to use 
-       "source activate CBIG_py3;<your_job_wrapper.sh>;source deactivate" as your "cmd" argument. 
+       "source CBIG_init_conda;conda activate CBIG_py3;<your_job_wrapper.sh>;conda deactivate" as your "cmd" argument. 
 
 DESCRIPTION:
     This script is a job submission script which is used to submit a command or a script to server scheduler as a job.

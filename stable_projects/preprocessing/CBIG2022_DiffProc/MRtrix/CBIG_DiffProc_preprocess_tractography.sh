@@ -59,7 +59,8 @@ cd $curr_dir
 # process diffusion images
 ###############
 echo "[INFO]: Starting diffusion image processing"
-source activate $py_env
+source CBIG_init_conda
+conda activate $py_env
 # decompress MR images
 echo "Step 2: decompress MR images"
 sub_dwi=$diff_dir/${sub}.nii.gz
@@ -109,10 +110,10 @@ for (( i=0; i<$len; i++ )); do
     parcels=${parcels_num_arr[i]}
     echo " Current parcellation: [ $parcellation ]"
     echo " Number of parcels: [ $parcels ]"
-    cmd="$scriptdir/CBIG_DiffProc_tractography_1_gen_parc.sh $parcellation $parcels \
-    $SUBJECTS_DIR $sub $atlas_dir $sub_outdir $label_dir"
-    ssh headnode "source activate $py_env; \
-    $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime 02:00:00 \
+    cmd="source CBIG_init_conda; conda activate $py_env; \
+        $scriptdir/CBIG_DiffProc_tractography_1_gen_parc.sh $parcellation $parcels \
+         $SUBJECTS_DIR $sub $atlas_dir $sub_outdir $label_dir"
+    ssh headnode "$CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime 02:00:00 \
     -name 'gen_parcellation' -mem 18GB -joberr '$logdir' -jobout '$logdir'" < /dev/null
 done
 # do label conversion for DK atlas
@@ -133,10 +134,10 @@ mrtransform $sub_outdir/5TT_unreg.mif -linear $sub_outdir/diff2struct_mrtrix.txt
 echo "[INFO]: Starting tractogram generation"
 echo "Step 6: estimate response function and generate tractogram"
 if [ ! -e $sub_outdir/dwi_wm_weights.csv ]; then
-    cmd="$scriptdir/CBIG_DiffProc_tractography_2_gen_tractogram.sh \
+    cmd="source CBIG_init_conda; conda activate $py_env; \
+        $scriptdir/CBIG_DiffProc_tractography_2_gen_tractogram.sh \
         $sub $sub_outdir $diff_dir $algo $mask $tract_streamlines"
-    ssh headnode "source activate $py_env; \
-    $CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime 04:30:00 -ncpus 8 \
+    ssh headnode "$CBIG_CODE_DIR/setup/CBIG_pbsubmit -cmd '$cmd' -walltime 04:30:00 -ncpus 8 \
     -name 'gen_tractogram' -mem 6GB -joberr '$logdir' -jobout '$logdir'" < /dev/null
 else
     echo "[WARNING]: SIFT2 output file exists! Skipping tractogram job submission..."

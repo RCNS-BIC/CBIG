@@ -29,7 +29,8 @@ bash CBIG_python_env_generic_setup.sh
 **[IMPORTANT]** To test if CBIG_py3 is successful, **log out and log in again** before running:
 
 ```bash
-source activate CBIG_py3
+source CBIG_init_conda
+conda activate CBIG_py3
 python -m pytest $CBIG_CODE_DIR/setup/python_env_setup/tests/CBIG_python_env_setup_unit_test.py
 ```
 
@@ -55,7 +56,7 @@ sh CBIG_python_env_aws_setup.sh
 **[IMPORTANT]** To test if CBIG_py3_aws is successful, **log out and log in again** before running:
 
 ```bash
-source activate CBIG_py3_aws
+conda activate CBIG_py3_aws
 aws configure
 ```
 
@@ -72,17 +73,17 @@ If you deem the package to be useful for whole lab, please contact the admins so
 
 # Switch between conda environments
 
-You can switch between CBIG's Python 3 environment and your own environment by the command `source activate <Your_Environment>`.
+You can switch between CBIG's Python 3 environment and your own environment by the command `conda activate <Your_Environment>`.
 
 ```bash
-username@yourpc:~> source activate <Your_Environment>
+username@yourpc:~> conda activate <Your_Environment>
 (<Your_Environment>) username@yourpc:~>
 (<Your_Environment>) username@yourpc:~> python my_python3_script.py
 (<Your_Environment>) username@yourpc:~>
-(<Your_Environment>) username@yourpc:~> source activate CBIG_py3
+(<Your_Environment>) username@yourpc:~> conda activate CBIG_py3
 (CBIG_py3) username@yourpc:~> python my_python_3_script.py
 (CBIG_py3) username@yourpc:~>
-(CBIG_py3) username@yourpc:~> source deactivate
+(CBIG_py3) username@yourpc:~> conda deactivate
 username@yourpc:~>
 ```
 

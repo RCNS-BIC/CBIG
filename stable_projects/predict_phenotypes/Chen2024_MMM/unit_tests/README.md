@@ -41,10 +41,11 @@ runtests('CBIG_MMM_unit_test')
 ```
 
 ### Transfer learning & Meta-matching methods (Python)
-Run the following code in terminal (need gpu to run):
+Run the following code in terminal:
 ```sh
-cd $CBIG_CODE_DIR/stable_projects/predict_phenotypes/Chen2024_MMM/unit_tests/
-sh ./CBIG_MMM_unit_test_python.sh
+cd $CBIG_CODE_DIR/stable_projects/predict_phenotypes/Chen2024_MMM
+export PYTHONPATH=$(pwd)
+python ./unit_tests/test_CBIG_MMM_unit_test.py
 ```
 
 ----

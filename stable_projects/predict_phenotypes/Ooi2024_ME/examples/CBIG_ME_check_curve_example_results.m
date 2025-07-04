@@ -1,6 +1,6 @@
-function CBIG_ME_check_example_results(sav_file)
+function CBIG_ME_check_curve_example_results(sav_file)
 
-% CBIG_ME_check_example_results(sav_file)
+% CBIG_ME_check_curve_example_results(sav_file)
 % This function checks if the generated example results are identical to
 % the reference files.
 %
@@ -19,7 +19,7 @@ addpath(example_dir);
 
 % run python script to read resultscompare prediction accuracies of KRR
 command = ['python ' fullfile(example_dir, 'CBIG_ME_check_example_savfile.py'), ...
-    ' ', fullfile(ref_dir,'predacc_behav60_results.sav'), ' ', ...
+    ' ', fullfile(ref_dir,'predacc_behav59_results.sav'), ' ', ...
     sav_file];
 [status, cmdout] = system(command);
 

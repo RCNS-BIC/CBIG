@@ -5,7 +5,9 @@ classdef CBIG_ME_unit_test < matlab.unittest.TestCase
 
     methods (Test)
         function test_example(testCase)
-            % run through example and check whether results replicate
+            % run through KRR prediction results using simulated data
+            % and check whether results replicate
+
             % set directories
             CBIG_CODE_DIR = getenv('CBIG_CODE_DIR');
             project_dir = fullfile(CBIG_CODE_DIR, 'stable_projects', 'predict_phenotypes', 'Ooi2024_ME');
@@ -21,17 +23,16 @@ classdef CBIG_ME_unit_test < matlab.unittest.TestCase
             mkdir(outdir)
             
             % run the example
-            CBIG_ME_example_wrapper(outdir)
-            output_file = fullfile(outdir,'curve_fit','predacc_behav60_results.sav');
+            CBIG_ME_KRR_example_wrapper(outdir)
             
             % replace unit test results
             if replace_unit_test
                 fprintf('Replacing unit test results... \n')
-                copyfile(output_file, fullfile(example_dir, 'ref_results'))
+                copyfile(fullfile(outdir), fullfile(example_dir, 'ref_results'))
             end
 
             % compare the results
-            CBIG_ME_check_example_results(output_file)
+            CBIG_ME_KRR_check_example_results(outdir)
 
             % remove the output directory
             rmdir(outdir, 's')

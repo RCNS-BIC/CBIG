@@ -23,6 +23,13 @@ class TestME(unittest.TestCase):
             f"Expected conda environment '{EXPECTED_ENV_NAME}', but found '{env_name}'.",
         )
 
+    script_dir = os.path.join(
+        os.environ.get("CBIG_CODE_DIR"),
+        "stable_projects",
+        "predict_phenotypes",
+        "Ooi2024_ME",
+        "curve_fitting",
+    )
     input_dir = os.path.join(
         os.environ.get("CBIG_CODE_DIR"),
         "stable_projects",
@@ -46,10 +53,10 @@ class TestME(unittest.TestCase):
     os.makedirs(output_dir, exist_ok=True)
 
     @patch(
-        "sys.argv", ["CBIG_ME_fit_all.py", "HCP", "60", "full", "predacc", input_dir]
+        "sys.argv", [os.path.join(script_dir, "CBIG_ME_fit_all.py"), "HCP", "59", "full", "predacc", input_dir]
     )
     def test_curve_fitting(self):
-        runpy.run_path("CBIG_ME_fit_all.py", run_name="__main__")
+        runpy.run_path(os.path.join(self.script_dir, "CBIG_ME_fit_all.py"), run_name="__main__")
 
         reference = os.path.join(
             os.environ.get("CBIG_CODE_DIR"),
@@ -58,7 +65,7 @@ class TestME(unittest.TestCase):
             "Ooi2024_ME",
             "examples",
             "ref_results",
-            "predacc_behav60_results.sav",
+            "predacc_behav59_results.sav",
         )
         example = os.path.join(
             os.environ.get("CBIG_CODE_DIR"),
@@ -71,7 +78,7 @@ class TestME(unittest.TestCase):
             "output",
             "full",
             "curve_fit",
-            "predacc_behav60_results.sav",
+            "predacc_behav59_results.sav",
         )
 
         # load reference files

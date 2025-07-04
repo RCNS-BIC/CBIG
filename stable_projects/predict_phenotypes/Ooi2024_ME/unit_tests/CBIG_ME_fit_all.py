@@ -1,1 +1,0 @@
-../curve_fitting/CBIG_ME_fit_all.py

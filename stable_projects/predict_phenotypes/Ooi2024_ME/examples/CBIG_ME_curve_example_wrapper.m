@@ -25,7 +25,7 @@ if ~exist(fullfile(input_dir,'HCP','output','full','curve_fit'))
     mkdir(fullfile(input_dir,'HCP','output','full','curve_fit'))
 end
 command = ['python ' fullfile(project_code_dir, 'CBIG_ME_fit_all.py'), ...
-    ' HCP 60 full predacc ' input_dir];
+    ' HCP 59 full predacc ' input_dir];
 [status, cmdout] = system(command);
 
 % move curve fit the output directory

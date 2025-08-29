@@ -1,6 +1,6 @@
 # Longer scans boost prediction and cut costs in brain-wide association studies
 # REFERENCE
-* Ooi LQR*, Orban C*, Zhang S*, Nichols TE, ..., Yeo BTT. [Longer scans boost prediction and cut costs in brain-wide association studies](https://www.biorxiv.org/content/10.1101/2024.02.16.580448v3). bioRxiv, 2024. 
+* Ooi LQR*, Orban C*, Shaoshi Z*, Nichols TE, ..., Yeo BTT. [Longer scans boost prediction and cut costs in brain-wide association studies](https://www.nature.com/articles/s41586-025-09250-1). **Nature**, 2025.  
 
 # BACKGROUND
 A pervasive dilemma in neuroimaging is whether to prioritize sample size or scan duration given fixed resources. Here, we systematically investigate this trade-off in the context of brain-wide association studies (BWAS) using resting-state functional magnetic resonance imaging (fMRI). 
@@ -13,19 +13,19 @@ Our online calculator is available [here](https://thomasyeolab.github.io/Optimal
 # CODE RELEASE
 ## Download stand-alone repository
 Since the whole Github repository is too big, we provide a stand-alone version of only this project and its dependencies. 
-To download this stand-alone repository, visit this link: [To be updated upon acceptance](https://github.com/ThomasYeoLab/Standalone_Ooi2024_ME)
+To download this stand-alone repository, visit this link: [https://github.com/ThomasYeoLab/Standalone_Ooi2024_ME](https://github.com/ThomasYeoLab/Standalone_Ooi2024_ME)
 
 ## Download whole repository
 Except for this project, if you want to use the code for other stable projects from our lab as well, you need to download the whole repository.
 
 To download the version of the code that was last tested, you can either visit this link: 
 
-[https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.34.2-Ooi2024_ME_update](https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.34.2-Ooi2024_ME_update)
+[https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.36.1-Ooi2024_ME_readme_update](https://github.com/ThomasYeoLab/CBIG/releases/tag/v0.36.1-Ooi2024_ME_readme_update)
 
 run the following command, if you have Git installed
 
 ```
-git checkout -b Ooi2024_ME v0.34.2-Ooi2024_ME_update
+git checkout -b Ooi2024_ME v0.36.1-Ooi2024_ME_readme_update
 ```
 
 # USAGE
@@ -56,6 +56,7 @@ git checkout -b Ooi2024_ME v0.34.2-Ooi2024_ME_update
 * `unit_tests`: this folder runs codes in `examples` and checks the reference output.
 
 # UPDATES
+* Release v0.36.1 (29/08/2025): README updated after journal acceptance
 * Release v0.34.2 (08/05/2025): Add scripts to replicate statistical test results
 * Release v0.34.0 (06/03/2025): Initial release of Ooi2024_ME (MRI Economics)
 

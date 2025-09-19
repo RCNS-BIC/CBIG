@@ -29,7 +29,7 @@ do
     rh_list_file="${list_dir}/rh_sub${i}_list.txt"
     vol_list_file="${list_dir}/vol_sub${i}_list.txt"
 
-    surf_files=$(find ${surf_input_dir} -name "*subj0${i}*fs5*")
+    surf_files=$(find ${surf_input_dir} -name "*subj0${i}*fs5*" | sort)
     for filename in $surf_files
     do
         if [[ ${filename} =~ "lh" ]]; then

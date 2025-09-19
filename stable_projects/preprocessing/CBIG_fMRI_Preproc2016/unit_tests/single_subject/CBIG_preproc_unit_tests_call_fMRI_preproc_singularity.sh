@@ -32,7 +32,7 @@ cd $work_dir
 log_file="${out_dir}/CBIG_preproc_unit_tests_call_fMRI_preproc_singularity.log"
 
 # Define the Singularity command
-cmd="source ~/.bashrc && module load singularity/3.11.1 && \
+cmd="source CBIG_init_conda && module load singularity/3.11.1 && \
 export SINGULARITY_CACHEDIR=$IMG_DIR/.singularity/cache && \
 conda activate CBIG_py3 && \
 $CBIG_CODE_DIR/stable_projects/preprocessing/CBIG_fMRI_Preproc2016/container/CBIG_preproc_run_container.sh \

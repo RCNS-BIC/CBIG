@@ -33,8 +33,8 @@ export CBIG_WB_DIR=/apps/HCP/workbench-1.1.1/
 export CBIG_FSLDIR=/apps/fsl/5.0.10
 
 # DO NOT CHANGE: define locations for unit tests data and replication data
-export CBIG_TESTDATA_DIR=/mnt/isilon/CSC1/Yeolab/CodeMaintenance/UnitTestData
-export CBIG_REPDATA_DIR=/mnt/isilon/CSC1/Yeolab/CodeMaintenance/ReplicationData
+export CBIG_TESTDATA_DIR=/mnt/nas/CSC21/Yeolab/CodeMaintenance/UnitTestData
+export CBIG_REPDATA_DIR=/mnt/nas/CSC21/Yeolab/CodeMaintenance/ReplicationData
 
 # DO NOT CHANGE: define scheduler location
 export CBIG_SCHEDULER_DIR=/opt/pbs/bin

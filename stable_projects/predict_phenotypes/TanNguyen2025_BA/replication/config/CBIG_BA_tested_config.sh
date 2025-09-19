@@ -1,4 +1,5 @@
 #! /bin/sh
+# Last successfully run on July 25, 2025 with git repository version v0.36.0-TanNguyen2025_BA
 # Written by Trevor Tan and CBIG under MIT license: https://github.com/ThomasYeoLab/CBIG/blob/master/LICENSE.md
 
 # DO NOT CHANGE: This clears old freesurfer variables if they previously exists

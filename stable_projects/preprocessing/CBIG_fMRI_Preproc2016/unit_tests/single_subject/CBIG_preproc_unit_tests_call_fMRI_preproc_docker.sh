@@ -33,7 +33,7 @@ cd $work_dir
 log_file="${out_dir}/CBIG_preproc_unit_tests_call_fMRI_preproc_docker.log"
 
 # Define the Docker command
-cmd="source ~/.bashrc && conda activate CBIG_py3 && \
+cmd="source CBIG_init_conda && conda activate CBIG_py3 && \
 $CBIG_CODE_DIR/stable_projects/preprocessing/CBIG_fMRI_Preproc2016/container/CBIG_preproc_run_container.sh \
 -c docker -m $MCR_dir -i $input_dir -o $out_dir \
 -s $curr_sub -anat_s $anat \

@@ -67,28 +67,28 @@ function CBIG_VisualizeSurfaceAnnotationInFreeview(lh_annot_file, rh_annot_file,
     raw_lh_lateral_file = fullfile(tmp_dir, 'lh_lateral.raw.png');
     lh_lateral_file = fullfile(output_dir, [label '_lh_lateral.png']);
     tmp_lh_lateral_file = fullfile(tmp_dir, 'lh_lateral.tmp.png');
-    system(CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 0, 0, raw_lh_lateral_file));
+    system(['bash -i -c ''' CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 0, 0, raw_lh_lateral_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_lh_lateral_file, tmp_lh_lateral_file));
 
     % left medial view 
     raw_lh_medial_file = fullfile(tmp_dir, 'lh_medial.raw.png');
     lh_medial_file = fullfile(output_dir, [label '_lh_medial.png']);
     tmp_lh_medial_file = fullfile(tmp_dir, 'lh_medial.tmp.png');
-    system(CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 180, 0, raw_lh_medial_file));
+    system(['bash -i -c ''' CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 180, 0, raw_lh_medial_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_lh_medial_file, tmp_lh_medial_file));
 
     % left dorsal view 
     raw_lh_dorsal_file = fullfile(tmp_dir, 'lh_dorsal.raw.png');
     lh_dorsal_file = fullfile(output_dir, [label '_lh_dorsal.png']);
     tmp_lh_dorsal_file = fullfile(tmp_dir, 'lh_dorsal.tmp.png');
-    system(CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 180, 90, raw_lh_dorsal_file));
+    system(['bash -i -c ''' CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 180, 90, raw_lh_dorsal_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_lh_dorsal_file, tmp_lh_dorsal_file));
 
     % left ventral view
     raw_lh_ventral_file = fullfile(tmp_dir, 'lh_ventral.raw.png');
     lh_ventral_file = fullfile(output_dir, [label '_lh_ventral.png']);
     tmp_lh_ventral_file = fullfile(tmp_dir, 'lh_ventral.tmp.png');
-    system(CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 180, -90, raw_lh_ventral_file));
+    system(['bash -i -c ''' CBIG_ViewLHAnnotationInFreeview(lh_annot_file, lh_underlay_file, 180, -90, raw_lh_ventral_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_lh_ventral_file, tmp_lh_ventral_file));
 
    
@@ -97,28 +97,28 @@ function CBIG_VisualizeSurfaceAnnotationInFreeview(lh_annot_file, rh_annot_file,
     raw_rh_lateral_file = fullfile(tmp_dir, 'rh_lateral.raw.png');
     rh_lateral_file = fullfile(output_dir, [label '_rh_lateral.png']);
     tmp_rh_lateral_file = fullfile(tmp_dir, 'rh_lateral.tmp.png');
-    system(CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 180, 0, raw_rh_lateral_file));
+    system(['bash -i -c ''' CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 180, 0, raw_rh_lateral_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_rh_lateral_file, tmp_rh_lateral_file));
 
     % right medial view
     raw_rh_medial_file = fullfile(tmp_dir, 'rh_medial.raw.png');
     rh_medial_file = fullfile(output_dir, [label '_rh_medial.png']);
     tmp_rh_medial_file = fullfile(tmp_dir, 'rh_medial.tmp.png');
-    system(CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 0, 0, raw_rh_medial_file));
+    system(['bash -i -c ''' CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 0, 0, raw_rh_medial_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_rh_medial_file, tmp_rh_medial_file));
 
     % right dorsal view 
     raw_rh_dorsal_file = fullfile(tmp_dir, 'rh_dorsal.raw.png');
     rh_dorsal_file = fullfile(output_dir, [label '_rh_dorsal.png']);
     tmp_rh_dorsal_file = fullfile(tmp_dir, 'rh_dorsal.tmp.png');
-    system(CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 180, 90, raw_rh_dorsal_file));
+    system(['bash -i -c ''' CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 180, 90, raw_rh_dorsal_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_rh_dorsal_file, tmp_rh_dorsal_file));
 
     % right ventral view
     raw_rh_ventral_file = fullfile(tmp_dir, 'rh_ventral.raw.png');
     rh_ventral_file = fullfile(output_dir, [label '_rh_ventral.png']);
     tmp_rh_ventral_file = fullfile(tmp_dir, 'rh_ventral.tmp.png');
-    system(CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 180, -90, raw_rh_ventral_file));
+    system(['bash -i -c ''' CBIG_ViewRHAnnotationInFreeview(rh_annot_file, rh_underlay_file, 180, -90, raw_rh_ventral_file) '''']);
     system(CBIG_ReplaceBlackByWhiteBkgCommand(raw_rh_ventral_file, tmp_rh_ventral_file));
 
 

@@ -80,12 +80,12 @@ else
     if(exist([outputtmpdir '/downsampled.lh.sphere']))
         disp('---------------------> Downsample sphere already exist. Skip ...')
     else
-        system(['wb_command -surface-create-sphere ', num2str(downsample), ' ',...
-         outputtmpdir, '/sphere.downsampled.R.surf.gii']);
-        system(['wb_command -surface-create-sphere ', num2str(downsample), ' ',...
-         outputtmpdir, '/sphere.downsampled.L.surf.gii']);
-        system(['wb_command -set-structure', ' ', outputtmpdir, '/sphere.downsampled.R.surf.gii CORTEX_RIGHT']);
-        system(['wb_command -set-structure', ' ', outputtmpdir, '/sphere.downsampled.L.surf.gii CORTEX_LEFT']);
+        system(['bash -i -c '' wb_command -surface-create-sphere ', num2str(downsample), ' ',...
+         outputtmpdir, '/sphere.downsampled.R.surf.gii''']);
+        system(['bash -i -c '' wb_command -surface-create-sphere ', num2str(downsample), ' ',...
+         outputtmpdir, '/sphere.downsampled.L.surf.gii''']);
+        system(['bash -i -c '' wb_command -set-structure', ' ', outputtmpdir, '/sphere.downsampled.R.surf.gii CORTEX_RIGHT''']);
+        system(['bash -i -c '' wb_command -set-structure', ' ', outputtmpdir, '/sphere.downsampled.L.surf.gii CORTEX_LEFT''']);
         surf_gii = gifti([outputtmpdir '/sphere.downsampled.R.surf.gii']);
         write_surf(surf_gii.vertices, surf_gii.faces-1, [outputtmpdir '/downsampled.rh.sphere']);
         surf_gii = gifti([outputtmpdir '/sphere.downsampled.L.surf.gii']);

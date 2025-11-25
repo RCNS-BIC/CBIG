@@ -27,7 +27,7 @@ tmpfile = tempname;
 tstart=tic;
 
 % Do conversion and loading
-system([wbcommand ' -cifti-convert -to-gifti-ext ' filename ' ' tmpfile '.gii']);
+system(['bash -i -c ''' wbcommand ' -cifti-convert -to-gifti-ext ' filename ' ' tmpfile '.gii''']);
 cifti = gifti([tmpfile '.gii']);
 
 if (verbose)

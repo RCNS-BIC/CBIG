@@ -22,7 +22,7 @@ else
 end
 
 tic
-unix([caret7command ' -cifti-convert -from-gifti-ext ' filename '.gii ' filename ' ' flag]);
+system(['bash -i -c ''' caret7command ' -cifti-convert -from-gifti-ext ' filename '.gii ' filename ' ' flag '''']);
 toc
 
 %unix([' /bin/rm ' filename '.gii ' filename '.dat ']);

@@ -145,8 +145,8 @@ if(strcmp(mesh,'fs_LR_32k'))
         end
         CBIG_SPGrad_generate_gradient_matrix(mesh, medial_mask, downsample, out_gradient_dir);
     end
-    cmd = ['sh ' CBIG_CODE_DIR '/utilities/matlab/speedup_gradients/CBIG_SPGrad_diffusion_embedding.sh '...
-     out_gradient_dir ' 100' ];
+    cmd = ['bash -i -c ''' CBIG_CODE_DIR '/utilities/matlab/speedup_gradients/CBIG_SPGrad_diffusion_embedding.sh '...
+     out_gradient_dir ' 100''' ];
     system(cmd); 
     CBIG_SPGrad_upsample_embed_matrix(mesh, medial_mask, 100, out_gradient_dir);            
 
@@ -179,8 +179,8 @@ elseif(~isempty(strfind(mesh,'fsaverage')))
         end
         CBIG_SPGrad_generate_gradient_matrix(mesh, medial_mask, downsample, out_gradient_dir);
     end
-    cmd = ['sh ' CBIG_CODE_DIR '/utilities/matlab/speedup_gradients/CBIG_SPGrad_diffusion_embedding.sh '...
-     out_gradient_dir ' 100' ];
+    cmd = ['bash -i -c ''' CBIG_CODE_DIR '/utilities/matlab/speedup_gradients/CBIG_SPGrad_diffusion_embedding.sh '...
+     out_gradient_dir ' 100''' ];
     system(cmd); 
     CBIG_SPGrad_upsample_embed_matrix(mesh, medial_mask, 100, out_gradient_dir);   
 else

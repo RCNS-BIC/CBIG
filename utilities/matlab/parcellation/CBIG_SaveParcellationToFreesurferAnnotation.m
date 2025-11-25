@@ -17,7 +17,7 @@ lh_avg_mesh5 = CBIG_ReadNCAvgMesh('lh', 'fsaverage5', 'sphere', 'cortex');
 rh_avg_mesh5 = CBIG_ReadNCAvgMesh('rh', 'fsaverage5', 'sphere', 'cortex');
 lh_avg_mesh = CBIG_ReadNCAvgMesh('lh', 'fsaverage', 'sphere', 'cortex');
 rh_avg_mesh = CBIG_ReadNCAvgMesh('rh', 'fsaverage', 'sphere', 'cortex');
-load freesurfer_color.mat
+[~,~, freesurfer_color] = read_fscolorlut(fullfile(getenv('FREESURFER_HOME'),'SegmentNoLUT.txt'));
 
 load(matlab_parcellation_file);
 lh_labels7 = MARS_NNInterpolate(lh_avg_mesh.vertices, lh_avg_mesh5, lh_labels');
@@ -25,10 +25,8 @@ rh_labels7 = MARS_NNInterpolate(rh_avg_mesh.vertices, rh_avg_mesh5, rh_labels');
 
 num_clusters = length(unique([lh_labels; rh_labels]));
 
-color = freesurfer_color(1:num_clusters, :)*255;
+color = freesurfer_color(1:num_clusters, 1:3);
 color(1, :) = 1; % freesurfer does not like 0 0 0
 
 CBIG_WriteParcellationToAnnotation(lh_labels7, lh_output_file, color);
 CBIG_WriteParcellationToAnnotation(rh_labels7, rh_output_file, color);
-
-exit

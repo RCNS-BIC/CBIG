@@ -29,13 +29,13 @@ function CBIG_SPGrad_upsample_embed_matrix(mesh,medial_mask,num_component,output
 num_component = num2str(num_component);
 outputtmpdir = [output_dir '/tmp'];
 
-if(strcmp(mesh,'fs_LR_32k'))
+if strcmp(mesh,'fs_LR_32k')
     lh_surf = CBIG_read_fslr_surface('lh', mesh, 'sphere', 'medialwall.annot');
     rh_surf = CBIG_read_fslr_surface('rh', mesh, 'sphere', 'medialwall.annot');
     if(strcmp(medial_mask,'NONE'))
         medial_mask = [lh_surf.MARS_label == 1;rh_surf.MARS_label == 1];
     end
-elseif(~isempty(strfind(mesh,'fsaverage')))
+elseif ~isempty(strfind(mesh,'fsaverage'))
     lh_surf = CBIG_ReadNCAvgMesh('lh', mesh, 'sphere', 'cortex');
     rh_surf = CBIG_ReadNCAvgMesh('rh', mesh, 'sphere', 'cortex');
     if(strcmp(medial_mask,'NONE'))
@@ -45,12 +45,12 @@ end
 lh_downsample_file = fullfile(output_dir,['lh_emb_' num_component '_distance_matrix.mat']);
 rh_downsample_file = fullfile(output_dir,['rh_emb_' num_component '_distance_matrix.mat']);
 
-if(~exist(lh_downsample_file))
+if ~exist(lh_downsample_file,'file')
     error('Cannot find diffusion embedding matrix for left hemisphere');
 else
     lh_emb_down = load(lh_downsample_file);
 end
-if(~exist(rh_downsample_file))
+if ~exist(rh_downsample_file,'file')
     error('Cannot find diffusion embedding matrix for right hemisphere');
 else
     rh_emb_down = load(rh_downsample_file);
@@ -70,7 +70,7 @@ else
     save(lh_downsample_file, 'emb', '-v7.3');
     clear emb
 end
-if(size(rh_emb_down.emb,1) == size(rh_surf.vertices,2))
+if size(rh_emb_down.emb,1) == size(rh_surf.vertices,2)
     disp('Right hemisphere has already been upsampled ... skip ...')
 else
     [emb, ~, ~] = MARS_linearInterpolate(rh_surf.vertices, rh_down_surf, rh_emb_down.emb');
